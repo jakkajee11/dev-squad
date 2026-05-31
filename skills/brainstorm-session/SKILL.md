@@ -84,10 +84,11 @@ Each agent in the brainstorm has a fixed perspective. Do not let them drift out 
 
 1. If `<topic>` is empty, ask the user with AskUserQuestion. Do not invent a topic.
 2. **Stack profile check** — same as squad-loop: if `.dev-squad/stack-profile.md` is missing, invoke `stack-detector` first ("First run in this project — scanning stack"). If present but a manifest is newer than the profile, offer to refresh. The brainstorm's 5 agents will receive their per-agent skill list from `stack-profile.json` when dispatched.
-3. Generate session-id.
-4. Create `.dev-squad/brainstorms/<session-id>/`.
-5. Write `topic.md` containing the verbatim topic plus any attached context the user provided.
-6. Initialize `session.json` with `current_round = 1`, `status = in_progress`.
+3. **Project conventions check (CLAUDE.md)** — same as squad-loop: if no `CLAUDE.md` exists at the repo root or `.claude/CLAUDE.md` and `.dev-squad/.claude-md-nudged` is absent, nudge the user once (generate via /init / don't-ask-again / ask-next-time, recording the choice in the marker). Advisory — never blocks the session.
+4. Generate session-id.
+5. Create `.dev-squad/brainstorms/<session-id>/`.
+6. Write `topic.md` containing the verbatim topic plus any attached context the user provided.
+7. Initialize `session.json` with `current_round = 1`, `status = in_progress`.
 
 ### Round 1 — Divergent POV (parallel)
 
