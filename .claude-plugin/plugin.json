@@ -1,0 +1,30 @@
+{
+  "name": "dev-squad",
+  "version": "0.7.0",
+  "description": "Software-development squad with five core agents plus four optional specialist reviewers (security/performance/requirement/standard). Three review modes — single, split, split-on-risk (default). Parallel-safe execution via workstreams + ownership maps, fleet mode for multi-task git-worktree isolation, 3-round brainstorm session, stack detector for per-agent skill recommendations, a compounding Karpathy-style project wiki, and cross-session resume (state survives session close; /squad-resume + SessionStart nudge).",
+  "author": {
+    "name": "happydaddy"
+  },
+  "keywords": [
+    "development",
+    "agents",
+    "code-review",
+    "testing",
+    "architecture",
+    "orchestration",
+    "brainstorm",
+    "product-management",
+    "wiki",
+    "knowledge-base",
+    "karpathy",
+    "stack-detection",
+    "skill-orchestration",
+    "parallel",
+    "fleet",
+    "worktree",
+    "claude-agent-team",
+    "session-resume"
+  ],
+  "hooks": "./hooks/hooks.json",
+  "license": "MIT"
+}

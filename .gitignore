@@ -1,0 +1,5 @@
+# Local OMC / HUD runtime state (session-specific, not source)
+.omc/
+
+# OS
+.DS_Store
