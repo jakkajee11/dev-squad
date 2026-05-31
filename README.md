@@ -26,7 +26,7 @@ A five-agent software development squad with five layers, all designed to run sa
 |------------------------|--------|------|------------------------------------------------------------------|
 | `security-reviewer`    | opus   | SEC  | Always in `split` mode; in `split-on-risk` when diff matches auth/payment/secrets/dependency/migration patterns |
 | `performance-reviewer` | opus   | PERF | Always in `split`; in `split-on-risk` when diff adds DB queries, migrations, loops with calls, caching changes |
-| `requirement-reviewer` | opus   | REQ  | Only in `split` mode (REQ is core to every diff; risk-conditional dispatch adds no signal) |
+| `requirement-reviewer` | sonnet | REQ  | Only in `split` mode (REQ is core to every diff; risk-conditional dispatch adds no signal) |
 | `standard-reviewer`    | sonnet | STD  | Only in `split` mode                                              |
 
 `product` participates in brainstorms by default; it does not run inside `/dev-squad-loop` unless you invoke it explicitly. The other four (core, non-product) plus 0-4 specialists form the dev-loop quartet + reviewer council.
