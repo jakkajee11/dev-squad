@@ -125,10 +125,13 @@ When invoked:
 2. **Stack profile check** — look for `.dev-squad/stack-profile.md`:
    - If absent → tell the user "First run in this project — scanning stack (one-time setup)" and invoke the `stack-detector` skill to produce `stack-profile.md` and `stack-profile.json` before continuing.
    - If present → read `stack-profile.json` to get per-agent skill recommendations. Check whether any manifest file (package.json, *.csproj, go.mod, Cargo.toml, etc.) has a `mtime` newer than the profile's `generated_at` — if yes, prompt: "Project manifests changed since last scan. Refresh stack profile? — yes / no / never-ask-again". Honor the answer.
-3. Generate `run_id` = `YYYYMMDD-HHMMSS-<slug-of-first-6-task-words>`.
-4. Create `.dev-squad/runs/<run-id>/`.
-5. Load or create `.dev-squad/state.json` and `.dev-squad/config.json`.
-6. Set `current_state = ARCHITECT`, `iteration = 1`.
+3. **Project conventions check (CLAUDE.md)** — the squad's agents work best when the project ships a `CLAUDE.md` (build/test commands, code style, conventions); Claude Code auto-loads it into every agent's context. Look for `CLAUDE.md` at the repo root or `.claude/CLAUDE.md`:
+   - If present → nothing to do; it is already in context.
+   - If absent AND `.dev-squad/.claude-md-nudged` does not exist → tell the user once: "No CLAUDE.md found — the squad runs better with one (project conventions, build/test commands, code style). Agents read it automatically." Then AskUserQuestion: "Generate one now (runs /init), then continue" / "Continue without — don't ask again" / "Continue without — ask next time". Honor the answer: on generate, run `/init` then continue; on don't-ask-again, write `.dev-squad/.claude-md-nudged` and continue; on ask-next-time, continue without writing the marker. Never block the loop on this — it is advisory.
+4. Generate `run_id` = `YYYYMMDD-HHMMSS-<slug-of-first-6-task-words>`.
+5. Create `.dev-squad/runs/<run-id>/`.
+6. Load or create `.dev-squad/state.json` and `.dev-squad/config.json`.
+7. Set `current_state = ARCHITECT`, `iteration = 1`.
 
 ### 2. State step
 

@@ -12,7 +12,7 @@ Concretely:
 3. Parse flags from `$ARGUMENTS`:
    - `--no-parallel` → force `mode=single` even if the architecter's design has multiple workstreams. Useful for cautious first runs on a new codebase.
    - `--worktree` → set `parallel_isolation=always-worktree` for this run, regardless of `.dev-squad/config.json` default.
-4. Run setup per the skill's "Setup" section: check stack-profile, generate run-id, create run directory, initialize state.json.
+4. Run setup per the skill's "Setup" section: check stack-profile, check for CLAUDE.md (nudge once if missing), generate run-id, create run directory, initialize state.json.
 5. If `.dev-squad/state.json` shows an in-progress run that is not COMPLETE/BLOCKED, follow the "Resuming an interrupted loop" protocol.
 6. Step through the state machine. After ARCHITECT, parse the marker `DESIGN_READY: … workstreams=N parallel=<bool>`:
    - If `parallel=true` AND `--no-parallel` was not passed → enter `PARALLEL_IMPLEMENT`. Build the DAG, dispatch wave-by-wave in single multi-Agent-tool messages.
