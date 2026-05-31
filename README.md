@@ -130,6 +130,8 @@ You can also run `/squad-detect` manually to refresh the profile after upgrading
 
 The profile is read-only with respect to the project — it never writes to your source code. It only reads manifests, configs, and a small sample of source files.
 
+Alongside the stack scan, setup also checks for a `CLAUDE.md` (repo root or `.claude/CLAUDE.md`). Claude Code auto-loads it into every agent's context, so a project that documents its build/test commands, code style, and conventions there gives the squad a sharper starting point. If none exists, the first `/dev-squad-loop` or `/brainstorm` nudges you once — generate one via `/init`, skip permanently, or skip for now. It's advisory and never blocks the loop; a permanent skip is remembered in `.dev-squad/.claude-md-nudged`.
+
 ## The brainstorm session
 
 Three rounds, structured so every voice gets heard before any commitment is made:
