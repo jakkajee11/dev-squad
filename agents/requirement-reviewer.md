@@ -12,7 +12,7 @@ description: |
   user: (no direct user — orchestrator-driven)
   assistant: Dispatching requirement-reviewer in parallel — verifying every AC has corresponding implementation and test coverage.
   </example>
-model: opus
+model: sonnet
 tools: Read, Grep, Glob, Bash
 ---
 
